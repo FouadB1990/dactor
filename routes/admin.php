@@ -15,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/dashbord',function(){
+Route::get('/',function(){
     return view('admin.dashbord');
 });
+
+Route::group(['middleware' => 'guest:admin'], function(){
+    Route::get('login' , 'LoginController@getLogin');
+});
+
+// Route::get('/dashbord',function(){
+//     return view('admin.dashbord');
+// });
+
